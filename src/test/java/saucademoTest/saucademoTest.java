@@ -20,11 +20,11 @@ public class saucademoTest {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.get("https://www.saucedemo.com/");
     }
 
     @Test
     public void authorizationTest (){
+        driver.get("https://www.saucedemo.com/");
         driver.findElement(By.id("user-name")).sendKeys("standard_user");
         driver.findElement(By.id("password")).sendKeys("secret_sauce");
         driver.findElement(By.id("login-button")).click();
@@ -33,6 +33,7 @@ public class saucademoTest {
 
     @Test
     public void purchaseTest (){
+        authorizationTest();
         driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
         driver.findElement(By.id("add-to-cart-sauce-labs-bike-light")).click();
         driver.findElement(By.id("add-to-cart-sauce-labs-bolt-t-shirt")).click();
